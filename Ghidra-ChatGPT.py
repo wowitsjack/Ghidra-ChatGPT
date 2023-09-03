@@ -25,7 +25,7 @@ def explainFunction(c_code):
     data = {
         "model": "gpt-4",
         "messages": [
-            {"role": "user", "content": "Explain this code, help me understand what's happening at a high level. You're my Ghidra pal, and I'm a newbie.:\n{}".format(c_code)}
+            {"role": "user", "content": "Explain this code, help me understand what's happening at a high level. You're my Ghidra pal, and I'm a newbie. I want you to keep it brief, don't overwhelm me, and take educated guesses at what this code chunk does in the context of a binary being RE'd, and what it's overall job is, and then give me a quick breakdown of this code itself.Tell me what area (software, firmware, hardware) it relates to most likely, Then tell me how I could further explore the most interesting things discovered in it, guide me what to click or do in Ghidra.:\n{}".format(c_code)}
         ]
     }
     data = json.dumps(data)  # Convert dictionary to JSON string
