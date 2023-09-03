@@ -1,19 +1,10 @@
-# Ghidra-ChatGPT: A Ghidra Plugin that uses OpenAI's GPT to Explain Decompiled Functions
-# Original Author: evyatar9 (https://github.com/evyatar9)
-# Python 3 Port Author: wowitsjack (https://github.com/wowitsjack)
-# Category: API
-# Keybinding: Ctrl-Alt-G
-# Menu Path: Tools.Ghidra-ChatGPT
+import urllib2
+import json
+from ghidra.util.task import TaskMonitor
+from ghidra.app.decompiler import DecompInterface
 
-# Import Required Libraries
-import urllib2  # For making HTTP requests
-import json  # For JSON encoding and decoding
-from ghidra.util.task import TaskMonitor  # For task monitoring in Ghidra
-from ghidra.app.decompiler import DecompInterface  # For decompiling functions in Ghidra
-
-# API Key for OpenAI GPT (Replace with your actual key)
-API_KEY = 'sk-XXXXXXX'
-
+# Your API Key
+API_KEY = 'sk-XXXXX'
 
 # Function to Ask GPT to Explain C Code
 def explainFunction(c_code):
@@ -28,10 +19,15 @@ def explainFunction(c_code):
     """
     
     # API URL
-    url = 'https://api.openai.com/v1/completions'
+    url = 'https://api.openai.com/v1/chat/completions'
     
     # Prepare the data payload
-    data = {"prompt": "Explain this code, this is for an extremely technical university comp-sci class. You need to give as much detail as you can, and make sure I understand, and not exclude anything. This is for critical reverse-enginereing work. Here is the code from Ghidra:\n" + c_code, "max_tokens": 2048, "model": "text-davinci-003"}
+    data = {
+        "model": "gpt-4",
+        "messages": [
+            {"role": "user", "content": "Explain this code, help me understand what's happening at a high level. You're my Ghidra pal, and I'm a newbie.:\n{}".format(c_code)}
+        ]
+    }
     data = json.dumps(data)  # Convert dictionary to JSON string
     
     # Make the HTTP request
@@ -39,9 +35,9 @@ def explainFunction(c_code):
         url,
         data,
         {
-            'Authorization': 'Bearer {}'.format(API_KEY),  # Authorization header
-            'Content-Type': 'application/json',  # Data type
-        },
+            'Authorization': 'Bearer {}'.format(API_KEY),
+            'Content-Type': 'application/json',
+        }
     )
     
     # Receive the response and decode the JSON
@@ -51,8 +47,7 @@ def explainFunction(c_code):
     if "error" in response:
         raise ValueError(response["error"])
     else:
-        return response["choices"][0]["text"]  # Return the explanation
-
+        return response["choices"][0]["message"]["content"]
 
 # Function to Get the Currently Decompiled Function
 def getCurrentDecompiledFunction():
@@ -87,7 +82,6 @@ def getCurrentDecompiledFunction():
         return decompiler.decompileFunction(function, 30, monitor).getDecompiledFunction().getC()
     except Exception as e:
         raise ValueError("Unable to decompile function: {}".format(str(e)))
-
 
 # Main Execution
 try:
