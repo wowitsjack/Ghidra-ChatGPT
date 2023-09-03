@@ -1,53 +1,43 @@
-# GptHidra
+# Ghidra-ChatGPT
 
-GptHidra is a Ghidra plugin that uses the [OpenAI Chat GPT](https://chat.openai.com/chat) to explain functions. With GptHidra, you can easily understand the purpose and behavior of functions in your codebase.
+Ghidra-ChatGPT is an advanced Ghidra plugin that integrates the computational capabilities of [OpenAI's GPT](https://chat.openai.com/chat) to provide automated semantic analysis of decompiled functions. This facilitates a deeper understanding of codebase functionality.
 
-![example.gif](images/example.gif)
+![Example Illustration](images/example.gif)
 
-## Requirements
+## Prerequisites
 
-- Ghidra `>= 10.1.5` (https://ghidra-sre.org).
-- An API key for the OpenAI Chat GPT API (https://beta.openai.com/account/api-keys).
+- Ghidra, version `>= 10.1.5` ([Official Site](https://ghidra-sre.org))
+- API key for OpenAI's GPT, obtainable from [OpenAI API](https://beta.openai.com/account/api-keys)
 
-## Installation
+## Installation Procedure
 
-1. Download the GptHidra script [GptHidra.py](./GptHidra.py).
-2. Open the Ghidra Script Manager (found in the `Window` menu).
-3. Click the `New` button to create a new script.
-4. Select `Python` as the language and give the script the name `GptHidra.py`.
-5. Paste the contents of the [GptHidra.py](./GptHidra.py) script into the editor window.
-6. Replace `API_KEY = ''` with your [OpenAI Chat GPT API key](https://beta.openai.com/account/api-keys).
-7. Click the `Save` button to save the script.
+1. **Acquire Script**: Download the Python script [Ghidra-ChatGPT.py](./Ghidra-ChatGPT.py).
+2. **Invoke Script Manager**: Within Ghidra, go to `Window` > `Script Manager`.
+3. **Instantiate New Script**: Click `New`, select `Python` as the language, and designate the script name as `Ghidra-ChatGPT.py`.
+4. **Incorporate Code**: Copy the code from [Ghidra-ChatGPT.py](./Ghidra-ChatGPT.py) into the editor. Substitute `API_KEY = ''` with the acquired OpenAI API key.
+5. **Persist Script**: Save the script by clicking the `Save` button.
 
-## Usage
+## Operational Guidelines
 
-To use GptHidra, select a function in the Ghidra decompiler and do one of the following:
+To invoke Ghidra-ChatGPT, adhere to one of the following procedures:
 
-1. Press `Ctrl + Alt + G` (you can edit the script to change this shortcut).
+1. **Keyboard Shortcut**: Execute `Ctrl + Alt + G` (modifiable within the script).
 
-2. Go to `Tools -> GptHidra` (you can edit the script to change this menu item).
+   **- OR -**
 
-An explanation of the selected function will be printed to the Ghidra console.
+2. **Menu Navigation**: Traverse to `Tools -> Ghidra-ChatGPT`.
 
+Upon activation, the plugin will conduct semantic analysis on the selected function and output the findings to the Ghidra console.
 
-## Contact
+## Contributions
+- Original author evyatar9
+- Port to Python 3 by wowitsjack
 
-Telegram: [@evyatar9](https://t.me/evyatar9)
+## Contribution Guidelines
 
-Discord: [evyatar9#5800](https://discordapp.com/users/812805349815091251)
+To contribute to the Ghidra-ChatGPT project, kindly submit pull requests or report issues through the [Ghidra-ChatGPT GitHub repository](https://github.com/wowitsjack/Ghidra-ChatGPT).
 
-## Contributing
+## Referential Material
 
-If you would like to contribute to the GptHidra extension, feel free to submit a pull request or report any issues you encounter on the [GptHidra repository](https://github.com/evyatar9/GptHidra).
-
-
-## References
-
-[https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
-
-[https://beta.openai.com/docs/](https://beta.openai.com/docs/)
-
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/evyatar9/GptHidra.svg)](https://starchart.cc/evyatar9/GptHidra)
+- [Decompiler Interface in Ghidra Documentation](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
+- [OpenAI API Guidelines](https://beta.openai.com/docs/)
