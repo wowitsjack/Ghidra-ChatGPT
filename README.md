@@ -1,6 +1,6 @@
 # Ghidra-ChatGPT
 
-Ghidra-ChatGPT is an advanced Ghidra plugin that integrates the computational capabilities of [OpenAI's GPT](https://chat.openai.com/chat) to provide automated semantic analysis of decompiled functions. This facilitates a deeper understanding of codebase functionality.
+Ghidra-ChatGPT is a specialized Ghidra plugin designed to utilize the machine learning capabilities of [OpenAI's GPT](https://chat.openai.com/chat) for semantic analysis of decompiled functions. This provides a nuanced understanding of codebase functionality.
 
 ![Example Illustration](images/example.gif)
 
@@ -16,6 +16,7 @@ Ghidra-ChatGPT is an advanced Ghidra plugin that integrates the computational ca
 3. **Instantiate New Script**: Click `New`, select `Python` as the language, and designate the script name as `Ghidra-ChatGPT.py`.
 4. **Incorporate Code**: Copy the code from [Ghidra-ChatGPT.py](./Ghidra-ChatGPT.py) into the editor. Substitute `API_KEY = ''` with the acquired OpenAI API key.
 5. **Persist Script**: Save the script by clicking the `Save` button.
+6. **Activate in Tools Menu**: In the Script Manager, locate your newly saved script and tick the 'In Tools Menu' checkbox.
 
 ## Operational Guidelines
 
@@ -30,12 +31,12 @@ To invoke Ghidra-ChatGPT, adhere to one of the following procedures:
 Upon activation, the plugin will conduct semantic analysis on the selected function and output the findings to the Ghidra console.
 
 ## Contributions
-- Original author evyatar9
-- Port to Python 3 by wowitsjack
+- Original script by evyatar9
+- Port to Python 3 executed by wowitsjack
 
 ## Contribution Guidelines
 
-To contribute to the Ghidra-ChatGPT project, kindly submit pull requests or report issues through the [Ghidra-ChatGPT GitHub repository](https://github.com/wowitsjack/Ghidra-ChatGPT).
+To contribute to the Ghidra-ChatGPT project, kindly submit pull requests or report issues through the [Ghidra-ChatGPT GitHub repository](https://github.com/your-repo/Ghidra-ChatGPT).
 
 ## Referential Material
 
